@@ -1,0 +1,202 @@
+/* Reset sencillo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #3a3a3a;
+  color: #fffdfd;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.training-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* CABECERA */
+
+.training-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.training-header p {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* FILA DE FLECHAS Y TRIÁNGULO */
+
+.arrows-row {
+  margin: 90px auto 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  max-width: 700px;
+}
+
+/* Flechas */
+.arrow {
+  width: 130px;
+  height: 130px;
+  background: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.arrow span {
+  font-size: 4rem;
+  color: #fff;
+}
+
+/* Triángulo central */
+.center-shape {
+  width: 160px;
+  height: 120px;
+  background: #2a2929;
+  border-radius: 20px;
+  clip-path: polygon(50% 0%, 100% 70%, 0% 70%);
+}
+
+/* FILA DE ESPEJOS */
+
+.mirrors-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Espejo base */
+.mirror {
+  position: relative;
+  width: 230px;
+  height: 90px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #fdfdfd, #d9e4ef);
+  border: 6px solid #000;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Simular el soporte del espejo interior (solo visual) */
+.mirror-center::before {
+  content: "";
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: #6e6c6c;
+  border-radius: 100%;
+}
+
+/* Etiqueta de texto dentro del espejo (solo para orientar al usuario) */
+.mirror span {
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #333;
+}
+
+/* === ESTADOS VISUALES PARA LA PRÁCTICA (para usar con JS) === */
+/* Flecha activa (cuando se “señaliza”) */
+.arrow.active {
+  background: #ffd800;
+  color: #000;
+  box-shadow: 0 0 25px rgba(255, 216, 0, 0.9);
+  transform: scale(1.05);
+}
+
+/* Espejo resaltado en el orden de observación */
+.mirror.highlight {
+  border-color: #ffd800;
+  box-shadow:
+    0 0 25px rgba(255, 216, 0, 0.9),
+    0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Para diferenciar pasos podrías usar estas clases extra si quieres (opcional) */
+.mirror.step-1.highlight::after,
+.mirror.step-2.highlight::after,
+.mirror.step-3.highlight::after {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.mirror.step-1.highlight::after { content: "1"; }
+.mirror.step-2.highlight::after { content: "2"; }
+.mirror.step-3.highlight::after { content: "3"; }
+
+/* INTERMITENTE VERDE */
+@keyframes blink-green {
+  0% { background: #00cc00; box-shadow: 0 0 25px #00cc00; }
+  50% { background: #004d00; box-shadow: 0 0 2px #003300; }
+  100% { background: #00cc00; box-shadow: 0 0 25px #00cc00; }
+}
+
+.arrow.blink {
+  animation: blink-green 0.8s infinite;
+  color: white !important;
+}
+
+
+/* ERROR: FLECHA ROJA + VIBRACIÓN */
+@keyframes wrong-flash {
+  0% { background: red; }
+  50% { background: darkred; }
+  100% { background: red; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+}
+
+.arrow.error {
+  animation: shake 0.4s ease, wrong-flash 0.4s ease;
+  background: red !important;
+}
+
+/* SEMÁFORO DE ESPEJOS */
+.mirror.step-1.highlight {
+  border-color: #d14040 !important; /* Esmeralda */
+  box-shadow: 0 0 20px #c45353;
+}
+
+.mirror.step-2.highlight {
+  border-color: #ffe600 !important; /* Amarillo */
+  box-shadow: 0 0 20px #ffe600;
+}
+
+.mirror.step-3.highlight {
+  border-color: #00ff00 !important; /* Verde */
+  box-shadow: 0 0 20px #00ff00;
+}
