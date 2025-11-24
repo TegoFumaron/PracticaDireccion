@@ -118,5 +118,21 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// ====== CLICK EN FLECHAS ======
+arrowLeft.addEventListener("click", () => {
+  if (!sequenceRunning) {
+    if (expectedDirection === "left") startSequence("left");
+    else showError("q");
+  }
+});
+
+arrowRight.addEventListener("click", () => {
+  if (!sequenceRunning) {
+    if (expectedDirection === "right") startSequence("right");
+    else showError("e");
+  }
+});
+
+
 // INICIAR BUCLE
 newInstruction();

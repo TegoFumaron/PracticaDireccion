@@ -7,12 +7,11 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #3a3a3a;
-  color: #fffdfd;
+  background: #3a3a3a; /* TUS COLORES */
+  color: #fffdfd; /* TUS COLORES */
 }
 
 /* CONTENEDOR PRINCIPAL */
-
 .training-container {
   max-width: 1100px;
   margin: 40px auto;
@@ -21,7 +20,6 @@ body {
 }
 
 /* CABECERA */
-
 .training-header h1 {
   font-size: 1.6rem;
   font-weight: 700;
@@ -34,7 +32,6 @@ body {
 }
 
 /* FILA DE FLECHAS Y TRIÁNGULO */
-
 .arrows-row {
   margin: 90px auto 60px;
   display: flex;
@@ -48,7 +45,7 @@ body {
 .arrow {
   width: 130px;
   height: 130px;
-  background: #000;
+  background: #000; /* TUS COLORES */
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -59,20 +56,20 @@ body {
 
 .arrow span {
   font-size: 4rem;
-  color: #fff;
+  color: #fff; /* TUS COLORES */
 }
 
 /* Triángulo central */
 .center-shape {
   width: 160px;
   height: 120px;
-  background: #2a2929;
+  background: #2a2929; /* TUS COLORES */
   border-radius: 20px;
   clip-path: polygon(50% 0%, 100% 70%, 0% 70%);
+  transition: background 0.2s ease;
 }
 
 /* FILA DE ESPEJOS */
-
 .mirrors-row {
   display: flex;
   justify-content: space-between;
@@ -88,8 +85,8 @@ body {
   width: 230px;
   height: 90px;
   border-radius: 40px;
-  background: linear-gradient(135deg, #fdfdfd, #d9e4ef);
-  border: 6px solid #000;
+  background: linear-gradient(135deg, #fdfdfd, #d9e4ef); /* TUS COLORES */
+  border: 6px solid #000; /* TUS COLORES */
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
@@ -97,7 +94,7 @@ body {
   overflow: hidden;
 }
 
-/* Simular el soporte del espejo interior (solo visual) */
+/* Soporte del espejo interior */
 .mirror-center::before {
   content: "";
   position: absolute;
@@ -106,53 +103,22 @@ body {
   transform: translateX(-50%);
   width: 70px;
   height: 70px;
-  background: #6e6c6c;
+  background: #6e6c6c; /* TUS COLORES */
   border-radius: 100%;
 }
 
-/* Etiqueta de texto dentro del espejo (solo para orientar al usuario) */
+/* Texto espejo */
 .mirror span {
   position: relative;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #333;
+  color: #333; /* TUS COLORES */
 }
 
-/* === ESTADOS VISUALES PARA LA PRÁCTICA (para usar con JS) === */
-/* Flecha activa (cuando se “señaliza”) */
-.arrow.active {
-  background: #ffd800;
-  color: #000;
-  box-shadow: 0 0 25px rgba(255, 216, 0, 0.9);
-  transform: scale(1.05);
-}
-
-/* Espejo resaltado en el orden de observación */
-.mirror.highlight {
-  border-color: #ffd800;
-  box-shadow:
-    0 0 25px rgba(255, 216, 0, 0.9),
-    0 8px 18px rgba(0, 0, 0, 0.4);
-}
-
-/* Para diferenciar pasos podrías usar estas clases extra si quieres (opcional) */
-.mirror.step-1.highlight::after,
-.mirror.step-2.highlight::after,
-.mirror.step-3.highlight::after {
-  position: absolute;
-  top: 8px;
-  right: 14px;
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: #222;
-}
-
-.mirror.step-1.highlight::after { content: "1"; }
-.mirror.step-2.highlight::after { content: "2"; }
-.mirror.step-3.highlight::after { content: "3"; }
-
-/* INTERMITENTE VERDE */
+/* ===========================================================
+   INTERMITENTE VERDE (SIN CAMBIAR TU COLOR DEL VEHÍCULO)
+   =========================================================== */
 @keyframes blink-green {
   0% { background: #00cc00; box-shadow: 0 0 25px #00cc00; }
   50% { background: #004d00; box-shadow: 0 0 2px #003300; }
@@ -164,8 +130,10 @@ body {
   color: white !important;
 }
 
+/* ===========================================================
+   ERROR → vibración + rojo
+   =========================================================== */
 
-/* ERROR: FLECHA ROJA + VIBRACIÓN */
 @keyframes wrong-flash {
   0% { background: red; }
   50% { background: darkred; }
@@ -185,18 +153,96 @@ body {
   background: red !important;
 }
 
-/* SEMÁFORO DE ESPEJOS */
+/* ===========================================================
+   SEMÁFORO → RESPETANDO TUS COLORES
+   =========================================================== */
+
+/* PASO 1 → TU ROJO PERSONALIZADO */
 .mirror.step-1.highlight {
-  border-color: #d14040 !important; /* Esmeralda */
+  border-color: #d14040 !important; /* Tus colores */
   box-shadow: 0 0 20px #c45353;
 }
 
+/* PASO 2 → Amarillo (tu color) */
 .mirror.step-2.highlight {
-  border-color: #ffe600 !important; /* Amarillo */
+  border-color: #ffe600 !important;
   box-shadow: 0 0 20px #ffe600;
 }
 
+/* PASO 3 → Verde (tu color) */
 .mirror.step-3.highlight {
-  border-color: #00ff00 !important; /* Verde */
+  border-color: #00ff00 !important;
   box-shadow: 0 0 20px #00ff00;
+}
+
+/* ===========================================================
+   MENÚ PRINCIPAL
+   =========================================================== */
+
+.menu-container {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.menu-container h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.menu-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.menu-box {
+  width: 260px;
+  height: 260px;
+  background: #111; /* TUS COLORES */
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menu-box h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.menu-box p {
+  font-size: 1.1rem;
+}
+
+.menu-box:hover {
+  transform: scale(1.05);
+  background: #222; /* TUS COLORES */
+}
+
+/* BOTÓN VOLVER */
+.back-container {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #1f1f1f;
+  border-radius: 10px;
+  color: #fffdfd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border: 2px solid #000;
+}
+
+.back-button:hover {
+  background: #333;
+  transform: scale(1.05);
 }
